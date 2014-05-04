@@ -1,6 +1,8 @@
+var CvariableTypeName = "C Variable Type";
 
 function CvariableTypeQuestion(randomStream)
 {
+
     //List of the possible answers and where it is   
     var typeArray = [{value:"int",ans:"a"},{value:"double",ans:"b"},{value:"char",ans:"c"},{value:"char*",ans:"d"}];
     var mathSymbols = ["+", "-", "*", "/", "%"];

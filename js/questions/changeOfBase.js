@@ -1,3 +1,4 @@
+var changeOfBaseName = "Change Of Base";
 
 function changeOfBaseQuestion(randomStream)
 {

@@ -1,4 +1,5 @@
 
+pythonStringSliceName = "Python String Slice";
 function pythonStringSliceQuestion(randomStream) {
     var nameArray = ["Malibu", "Ventura", "Goleta", "Lompoc", "Oxnard", "Montecido", "Camarillo", "Moorpark"];
 

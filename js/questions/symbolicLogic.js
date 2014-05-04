@@ -1,4 +1,5 @@
 //Parameter randomStream should be an instance of the RandomStream class.
+var symbolicLogicName = "Symbolic Logic Question";
 function symbolicLogicQuestion(randomStream)
 {
     // Bool Operator classes, for doing quick generation and execution boolean expressions.
