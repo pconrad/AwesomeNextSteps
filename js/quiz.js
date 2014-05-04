@@ -1,9 +1,9 @@
-function Quiz(seed,num,type)
+function Quiz(seed,num,questionFunc)
 {
     this.seed = seed;
     this.num = num;
-    this.type = type;
-
+//    this.type = type;
+/*
     var questionFunc = null;
 
     if (type === "changeOfBase") 
@@ -20,7 +20,7 @@ function Quiz(seed,num,type)
 	questionFunc = symbolicLogicQuestion;
     else if (type == "CvariableType")
 	questionFunc = CvariableTypeQuestion;
-
+*/
 
     var randomStream = new RandomStream(seed);
 

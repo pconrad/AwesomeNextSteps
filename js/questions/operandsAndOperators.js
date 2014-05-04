@@ -1,4 +1,6 @@
 //Parameter randomStream should be an instance of the RandomStream class.
+operandsAndOperatorsName = "Operands And Operators";
+
 function operandsAndOperatorsQuestion(randomStream)
 {
 	//Choose size of problem
@@ -258,3 +260,5 @@ function operandsAndOperatorsQuestion(randomStream)
         return text;
     };
 };
+
+

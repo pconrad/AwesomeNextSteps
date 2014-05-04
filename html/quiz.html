@@ -7,17 +7,19 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>The Beginning of the Next Steps of Project Awesome</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="../js/bits.js"></script>
     <script src="../js/random.js"></script>
-    <script src="../js/questions.js"></script>    
-    <script src="../js/questions/orderOfOperations.js"></script>
-    <script src="../js/questions/changeOfBase.js"></script>
-    <script src="../js/questions/operandsAndOperators.js"></script>
-    <script src="../js/questions/pythonProgramOutput.js"></script>
-    <script src="../js/questions/pythonStringSlice.js"></script>
-    <script src="../js/questions/symbolicLogic.js"></script>
-    <script src="../js/questions/CvariableType.js"></script>
-    
+    <script>
+      function loadQuestionType(questionTypeString, callback)
+      {
+       var url= "../js/questions/" + questionTypeString + ".js";
+       var script = document.createElement('script');
+       script.src = url;
+       script.onload = callback;
+       document.head.appendChild(script);
+      }
+    </script>
     <script src="../purl/purl.js"></script>
     <script src="../js/quiz.js"></script>
 </head>
@@ -25,7 +27,7 @@
 <body>
 
     <header> 
-        <h1 id="pythontitle">Order of Operations</h1>
+        <h1 id="quiztitle"></h1>
     </header>
 
     <div id="seed"></div>
@@ -33,19 +35,26 @@
     <div id="answers"></div>
     
     <script>
-	
-        var url = purl(); //Parse the current URL using the purl library
-        var seed = parseInt(url.param("seed"),16);
-        var num = url.param("numQuestions");
-        var questionType = url.param("questionType");
+        
+        var url = purl();
+        /* we need to wait for the question to load */
+        function afterLoad() {	
+          var seed = parseInt(url.param("seed"),16);
+          var num = url.param("numQuestions");
+          var questionType = url.param("questionType");
+        
+          var questionFunc = eval(questionType+"Question");
+          var quizName = eval(questionType+"Name");
 
-        var quiz = new Quiz(seed,num,questionType);
+          var quiz = new Quiz(seed,num, questionFunc);
+          document.getElementById("quiztitle").innerHTML= quizName;
 
-        document.getElementById("questions").innerHTML += quiz.formatQuestionsHTML();
-	document.getElementById("seed").innerHTML += "<h2>Quiz #: " + seed.toString(16).toUpperCase() + "</h2> <hr> <br>";
+          document.getElementById("questions").innerHTML += quiz.formatQuestionsHTML();
+  	  document.getElementById("seed").innerHTML += "<h2>Quiz #: " + seed.toString(16).toUpperCase() + "</h2> <hr> <br>";
 
-	localStorage.setItem("quiz",JSON.stringify(quiz));
-
+	  localStorage.setItem("quiz",JSON.stringify(quiz));
+        };
+        loadQuestionType(url.param("questionType"),afterLoad);
     </script>
 
     <a href="./answers.html" target="_blank">Answer Key</a>

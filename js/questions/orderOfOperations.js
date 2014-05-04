@@ -1,4 +1,6 @@
 //Parameter randomStream should be an instance of the RandomStream class.
+var orderOfOperationsName = "Order Of Operations";
+
 function orderOfOperationsQuestion(randomStream)
 {
     //Generate the three variables
@@ -81,3 +83,7 @@ function orderOfOperationsQuestion(randomStream)
     };
 
 };
+
+
+
+

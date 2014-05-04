@@ -418,16 +418,21 @@ function pythonProgramOutputC(randomStream)
    
 };
 
+var pythonProgramOutputName = "Python Program Output";
 
-function pythonProgramOutput(randomStream)
+function pythonProgramOutputQuestion(randomStream)
 {
   switch(randomStream.nextIntRange(3))
   {
     case 0:
-      return new pythonProgramOutputA(randomStream)
+      var quiz =  new pythonProgramOutputA(randomStream)
+      return quiz;
     case 1:
-      return new pythonProgramOutputB(randomStream)
+      var quiz =  new pythonProgramOutputB(randomStream)
+      return quiz;
     case 2:
-      return new pythonProgramOutputC(randomStream)
+      var quiz =  new pythonProgramOutputC(randomStream)
+      return quiz;
   }
 }
+
