@@ -66,6 +66,10 @@ function linkToQuiz(url,extraParams,seed) {
 	seed.toString(16) +
 	"&numQuestions" + "=" 
 	+ url.param("numQuestions") +
+	
+	"&difficulty" + "=" 
+	+ url.param("difficulty") +
+	
 	"&questionType" + "=" 
 	+ url.param("questionType") +
 	extraParams;
@@ -81,37 +85,37 @@ function linkToQuizFromJSON(url,extraParams,seed) {
 
 
 function buildQuiz() {
+    
+    var url = purl(); //Parse the current URL using the purl library
+    
+    var num = url.param("numQuestions");
+    var questionType = url.param("questionType");
+    var questions = url.param("questions");
+    var difficulty = url.param("difficulty");
+    var key = url.param("key");
+    
+    var seed = determineSeed(url.param("seed"));
+    
+    //console.log("seed="+seed)
 
-        var url = purl(); //Parse the current URL using the purl library
-
-        var num = url.param("numQuestions");
-        var questionType = url.param("questionType");
-	var questions = url.param("questions");
-	var key = url.param("key");
-
-	var seed = determineSeed(url.param("seed"));
-        console.log("seed="+seed)
-
-        var title = ""
-        try {
-           title = questionsTypes[questionType].title;
-        } catch (err) {
-           title = "Unknown question type";
-        }
+    var title = ""
+    try {
+       title = questionsTypes[questionType].title;
+    } catch (err) {
+       title = "Unknown question type";
+    }
     
 	// generate the quiz using the seed
-
-
-
-        var quizDescriptor = 
-
+	var parameters = {"difficulty":difficulty};
+	
+    var quizDescriptor = 
     {"version":0.1,
      "title":title,
-     "quiz":[{"question":questionType,"repeat":num}]}
-
-	
-
-        var quiz = new Quiz(seed,quizDescriptor);
+     "quiz":[{"question":questionType,"repeat":num, "parameters":parameters}]
+     }     
+     
+     
+    var quiz = new Quiz(seed,quizDescriptor);
 
 	// TODO: Fill in the parts of the document TODO: Refactor using JQuery instead of long form JavaScript calls
 	// TODO: Only fill it in if it is asked for in the URL

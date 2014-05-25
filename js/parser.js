@@ -17,6 +17,7 @@ function parseQuizJSON(quizArray, randomStream)
 		{
 		    var questionType = item.question;
 		    var parameters = (("parameters" in item) ? item.parameters : {});
+		    
 		    var repeat = (("repeat" in item) ? item.repeat : 1);
 		    
 		    var questionFunc = ((questionType in questionTypes) ? questionTypes[questionType].f : null);
@@ -26,7 +27,8 @@ function parseQuizJSON(quizArray, randomStream)
 			{
 			    for(var j=0; j<repeat; j++)
 				{
-				    questions.push(new questionFunc(randomStream)); //once parameters are implemented, this call will be questionFunc(randomStream, parameters)
+				    //once parameters are implemented, this call will be questionFunc(randomStream, parameters)
+				    questions.push(new questionFunc(randomStream, parameters)); 		    
 				}
 			}
 		}

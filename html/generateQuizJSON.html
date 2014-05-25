@@ -37,7 +37,7 @@
 <form id="inputs">
         Order of Operations: <input type="number" name="orderOfOperations" value="0"></input> <br>
 		Change of Base: <input type="number" name="changeOfBase" value="0"></input> <br>
-		Operands and Operators: <input name="number" id="operandsAndOperators" value="0"></input> <br>
+		Operands and Operators: <input type="number" name="operandsAndOperators" value="0"></input> <br>
 		Python String Slicing: <input name="number" id="pythonStringSlice" value="0"></input> <br>
 		Simple Python Programs: <input name="number" id="pythonProgramOutput" value="0"></input> <br>
 		Python Strings: <input type="number" name="pyStrings" value="0"></input> <br>
@@ -92,6 +92,7 @@
 		quizObject["version"] = 0.1;
 		quizObject["title"] = $("#quizTitle").val();
 		quizObject["quiz"] = quiz;
+		
 
 		var jsonString = JSON.stringify(quizObject);
 

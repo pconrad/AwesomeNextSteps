@@ -1,16 +1,16 @@
 //Parameter randomStream should be an instance of the RandomStream class.
-function operandsAndOperatorsQuestion(randomStream)
+function operandsAndOperatorsQuestion(randomStream, parameters)
 {
-	//Choose size of problem
-    //For now, 2 operators shuold suffice, 
-    //but this exists for the creation of more complex problems
-    //It would have been overkill to make the problem completely 
-    //expandable for different sizes of operators because 2 operators shuold 
-    //suffice in getting the point accorss to students.
-    //The creaton of the problem and correct answer ormation are dynamic and expandable
-    //Howerver, the creation of distractors is specific to a 2 operator problem, so it 
-    //may need to be redone if this parameter shuold change
-	var numberOfOperators = 2;
+    //The "parameters" coming in will be an object with parameters for 
+    //setting up the question.
+    //One will be the difficult of the question, which right now is
+    //going to be "easy", "medium", or "hard"
+    //
+	//This difficulty map takes in the difficulty parameter, and maps it
+	//to an acual number input for the problem
+	var difficultyMap = {"easy":2 , "medium":3 , "hard":4};
+	//Looking up the given difficulty in the map
+	var numberOfOperators = difficultyMap[parameters.difficulty];
 	
     //For now, only + and *, this can be 
     //expanded to other operations
