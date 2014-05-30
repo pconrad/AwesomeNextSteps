@@ -1,9 +1,9 @@
 //Parameter randomStream should be an instance of the RandomStream class.
 function operandsAndOperatorsQuestion(randomStream, parameters)
 {
-    //The "parameters" coming in will be an object with parameters for 
-    //setting up the question.
-    //One will be the difficult of the question, which right now is
+    //The "parameters" coming in will be an object that represents
+    //parameters for setting up the question.
+    //One will be the difficulty of the question, which right now is
     //going to be "easy", "medium", or "hard"
     //
 	//This difficulty map takes in the difficulty parameter, and maps it
