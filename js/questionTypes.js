@@ -3,9 +3,12 @@
 var questionTypes = {
 "changeOfBase":          {"f": changeOfBaseQuestion,       title: "Change of Base"},
 "orderOfOperations":     {"f": orderOfOperationsQuestion,  title: "Order of Operations"},
-"operandsAndOperators":  {"f":operandsAndOperatorsQuestion,title: "Operands and Operators"},
+"operandsAndOperators":  {"f":operandsAndOperatorsQuestion,title: "Operands and Operators", 
+
+	parameters: {"difficulty": ["easy", "medium", "hard"]}},
+
 "pythonProgramOutput":   {"f":pythonProgramOutputQuestion, title: "Python Program Output"},
-"pythonStringSlice":    {"f":pythonStringSliceQuestion,    title: "Python String Slice"},
+"pythonStringSlice":     {"f":pythonStringSliceQuestion,   title: "Python String Slice"},
 "symbolicLogic":         {"f":symbolicLogicQuestion,       title: "Symbolic Logic"},
 "CvariableType":         {"f":CvariableTypeQuestion,       title: "C Variable Type"},
 "cStrings":              {"f":cStringsQuestion,            title: "C Strings"},
@@ -13,12 +16,23 @@ var questionTypes = {
 };
 
 
-function addOptionForEachQuestionType(e) {
+function addOptionForEachQuestionType(questionsDropdown) {
     
     $.each(questionTypes, function(key, val) {
 	    //console.log("key="+key+" val.title=" +val.title);
-	    e.append($('<option></option>').val(key).html(val.title));
+	    questionsDropdown.append($('<option></option>').val(key).html(val.title));
+  
 	});
+}
     
-
+function addOptionForParameters(questionsDropdown, parametersDropdown) {
+   
+	//var $ = $('#location');
+    
+    questionsDropdown.change(function () {        
+            $.each(this.parameters, function(key, val) {
+		paramsDropdown.append($('<option></option>').val(key).html(val.parameters));  
+	});
+        
+    });
 }
