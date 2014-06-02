@@ -95,34 +95,18 @@ function buildQuiz() {
 
 
 
-    var parameterRegex = /&([^=&#]*Parameter\=)([^=&#]*)&*/g;
+    var parameterRegex = /&([^=&#]*)(Parameter)(\=)([^=&#]*)&*/g;
     var match, params = {};
-
 
     while (match = parameterRegex.exec(url.data.attr.query)) 
     {
-        params[match[1]] = match[2];
+        params[match[1]] = match[4];
     }
  
     console.log(params);
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    var parameters = {};
-    //find all things in the url that have the word"parameter" in them
-    //add to the parameter object here
-    var difficulty = url.param("difficultyParameter");    
 
-    parameters.difficulty = difficulty;
+
 
     var title = "";
     try {
@@ -134,7 +118,7 @@ function buildQuiz() {
     var quizDescriptor = 
     {"version":0.1,
      "title":title,
-     "quiz":[{"question":questionType,"repeat":num, "parameters":parameters}]
+     "quiz":[{"question":questionType,"repeat":num, "parameters":params}]
      }     
      
      
