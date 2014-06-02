@@ -92,9 +92,10 @@ function buildQuiz() {
     
 
 
-
-
-
+    //Regex - URL parsing... 
+    //Should do something kind of like this, but with a json stringified object 
+    //that is inside the URL
+    /*
     var parameterRegex = /&([^=&#]*)(Parameter)(\=)([^=&#]*)&*/g;
     var match, params = {};
 
@@ -104,6 +105,7 @@ function buildQuiz() {
     }
  
     console.log(params);
+    */
 
 
 
