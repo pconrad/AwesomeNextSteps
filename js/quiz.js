@@ -66,10 +66,6 @@ function linkToQuiz(url,extraParams,seed) {
 	seed.toString(16) +
 	"&numQuestions" + "=" 
 	+ url.param("numQuestions") +
-	
-	"&difficulty" + "=" 
-	+ url.param("difficulty") +
-	
 	"&questionType" + "=" 
 	+ url.param("questionType") +
 	extraParams;
@@ -91,22 +87,22 @@ function buildQuiz() {
     var num = url.param("numQuestions");
     var questionType = url.param("questionType");
     var questions = url.param("questions");
-    var difficulty = url.param("difficulty");
-    var key = url.param("key");
-    
+    var key = url.param("key");    
     var seed = determineSeed(url.param("seed"));
     
-    //console.log("seed="+seed)
+    var parameters = {};
+    //find all things in the url that have the word"parameter" in them
+    //add to the parameter object here
+    var difficulty = url.param("difficultyParameter");    
 
-    var title = ""
+    parameters.difficulty = difficulty;
+
+    var title = "";
     try {
        title = questionsTypes[questionType].title;
     } catch (err) {
        title = "Unknown question type";
     }
-    
-	// generate the quiz using the seed
-	var parameters = {"difficulty":difficulty};
 	
     var quizDescriptor = 
     {"version":0.1,
@@ -149,9 +145,9 @@ function buildQuiz() {
 
 function buildQuizFromJSON() {
 
-        var url = purl(); //Parse the current URL using the purl library
+    var url = purl(); //Parse the current URL using the purl library
 
-        var jsonString = url.param("jsonString");
+    var jsonString = url.param("jsonString");
 	var questions = url.param("questions");
 	var key = url.param("key");
 	var showJson = url.param("showJson");

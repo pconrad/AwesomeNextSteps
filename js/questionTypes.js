@@ -34,19 +34,20 @@ function addOptionForParameters() {
     		var selectedQuestion =$(this).val();
     		var params = questionTypes[selectedQuestion].parameters; 
     		
+
 			if (typeof params == "undefined") 
 			{
-	    		$('#difficulty').hide();
+				$('#difficultyParameter').empty();
+	    		$('#difficultyParameter').hide();
 				return;
 			}
 			
-			$('#difficulty').empty();
-    		$('#difficulty').show();
+    		$('#difficultyParameter').show();
     		for (var param in params)
     		{
 	    		for(var value in params[param])
 				{
-					$('#difficulty').append($('<option></option>').html(params[param][value]));
+					$('#difficultyParameter').append($('<option></option>').html(params[param][value]));
 	     
 				};
     		}
