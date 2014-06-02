@@ -90,6 +90,33 @@ function buildQuiz() {
     var key = url.param("key");    
     var seed = determineSeed(url.param("seed"));
     
+
+
+
+
+
+    var parameterRegex = /&([^=&#]*Parameter\=)([^=&#]*)&*/g;
+    var match, params = {};
+
+
+    while (match = parameterRegex.exec(url.data.attr.query)) 
+    {
+        params[match[1]] = match[2];
+    }
+ 
+    console.log(params);
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     var parameters = {};
     //find all things in the url that have the word"parameter" in them
     //add to the parameter object here
