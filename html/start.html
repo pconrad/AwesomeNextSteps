@@ -79,10 +79,13 @@ $(document).ready(function(){
             <option value="no">no</option>
         </select></p>
 
-	<!-- This drop down menu is popualted by a call to "addOptionForEachQuestionType"
-	     and the questionTypes are defined in js/questionTypes.js -->
 
-        <select name="questionType" id="questionType" ></select>
+        <select name="questionType" id="questionType" >
+	        <option selected disabled>Question Type</option>
+	        <!-- all other options populated using a call to 
+	        	"addOptionForEachQuestionType" and the questionTypes 
+	        	are defined in js/questionTypes.js -->
+        </select>
         
         <select name="difficulty" id="difficulty" style="display: none;"></select>
                 
