@@ -3,9 +3,11 @@
 var questionTypes = {
 "changeOfBase":          {"f": changeOfBaseQuestion,       title: "Change of Base"},
 "orderOfOperations":     {"f": orderOfOperationsQuestion,  title: "Order of Operations"},
-"operandsAndOperators":  {"f":operandsAndOperatorsQuestion,title: "Operands and Operators", 
 
-	parameters: {"difficulty": ["easy", "medium", "hard"]}},
+"operandsAndOperators":  {"f":operandsAndOperatorsQuestion,
+						title: "Operands and Operators", 
+				   parameters: {"difficulty": ["easy", "medium", "hard"]}
+				   		},
 
 "pythonProgramOutput":   {"f":pythonProgramOutputQuestion, title: "Python Program Output"},
 "pythonStringSlice":     {"f":pythonStringSliceQuestion,   title: "Python String Slice"},
@@ -16,23 +18,36 @@ var questionTypes = {
 };
 
 
-function addOptionForEachQuestionType(questionsDropdown) {
+function addOptionForEachQuestionType(e) 
+{
+
+	    e.append($('<option></option>').val(key).html(val.title));
     
     $.each(questionTypes, function(key, val) {
 	    //console.log("key="+key+" val.title=" +val.title);
-	    questionsDropdown.append($('<option></option>').val(key).html(val.title));
+	    e.append($('<option></option>').val(key).html(val.title));
   
 	});
 }
     
-function addOptionForParameters(questionsDropdown, parametersDropdown) {
-   
-	//var $ = $('#location');
-    
-    questionsDropdown.change(function () {        
-            $.each(this.parameters, function(key, val) {
-		paramsDropdown.append($('<option></option>').val(key).html(val.parameters));  
-	});
-        
-    });
-}
+function addOptionForParameters() {
+       
+    $('#questionType').change(function () 
+    	{
+    		var selectedQuestion =$(this).val();
+    		var params = questionTypes[selectedQuestion].parameters; 
+    		
+    		$('#difficulty').show();
+    		
+    		for (var param in params)
+    		{
+	    		for(var value in params[param])
+				{
+					$('#difficulty').append($('<option></option>').html(params[param][value]));
+	     
+				};
+    		}
+
+			
+		});
+}//end of addOptionForParameters()

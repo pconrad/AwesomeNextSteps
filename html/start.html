@@ -25,12 +25,12 @@
     <script>
 
 $(document).ready(function(){
-  addOptionForEachQuestionType($("#questionType"), $("#parameters"));
+  addOptionForEachQuestionType($("#questionType"));
+  addOptionForParameters();
+
 });
 
    </script>
-
-
 </head>
 
 <body>
@@ -84,16 +84,8 @@ $(document).ready(function(){
 
         <select name="questionType" id="questionType" ></select>
         
-        <select name="parameters" id="parameters"></select>
+        <select name="difficulty" id="difficulty" style="display: none;"></select>
                 
-   <!-- <p>Difficulty:
-        <select name="difficulty" value="easy">
-            <option value="easy">easy</option>
-            <option value="medium">medium</option>
-            <option value="hard">hard</option>
-        </select></p>-->
-
-
         <br> <br>
         <input type="submit" value="Get Quiz">
 
