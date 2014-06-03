@@ -82,13 +82,15 @@ $(document).ready(function(){
 
         <select name="questionType" id="questionType" >
 	        <option selected disabled>Question Type</option>
-	        <!-- all other options populated using a call to 
+	            <!-- all other options populated using a call to 
 	        	"addOptionForEachQuestionType" and the questionTypes 
 	        	are defined in js/questionTypes.js -->
         </select>
         
-        
         <div name="parametersDiv" id="parametersDiv">
+            <!-- This empty div is filled with html elements that 
+            correspond the th parameters for a given question.  
+            This creaion and deletion done in questionTypes.js -->
         </div>
                 
         <br> <br>

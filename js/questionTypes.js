@@ -21,7 +21,11 @@ var questionTypes =
         title: "Operands and Operators", 
         parameters: 
         {
-            "difficulty": ["easy", "medium", "hard"]
+            "difficulty": 
+            {
+                type: "select",
+                values: ["easy", "medium", "hard"]
+            }
         }
     },
     
@@ -93,17 +97,20 @@ function addOptionForParameters()
 		for (var param in params)
 		{
 		    //Create a select for this parameter's options
-            var paramSelect = document.createElement("select");
+		    
+            var paramSelect = document.createElement(params[param].type);
             
+            //When the URL creation is refactored, the + "Parameter"
+            //can be taken out completely
             paramSelect.setAttribute("name", param + "Parameter");
             paramSelect.setAttribute("id", param + "Parameter");
     		document.getElementById("parametersDiv").appendChild(paramSelect);
 
             //Populate the select with the appropriate parameter options
-    		for(var value in params[param])
+    		for(var value in params[param].values)
 			{
-                $('#' + param + "Parameter").append($('<option></option>').html(params[param][value]));
-			
+			    var parameterOption = params[param].values[value];
+                $('#' + param + "Parameter").append($('<option></option>').html(parameterOption));
 			};
 		}//End of param loop
 	});//End of change function
