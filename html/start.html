@@ -68,16 +68,18 @@ $(document).ready(function(){
         </select>
 
 	<p>Show questions:
-        <select name="questions" value="yes">
+        <select name="questions" id="questions" value="yes">
             <option value="yes">yes</option>
             <option value="no">no</option>
-        </select></p>
+        </select>
+    </p>
 
 	<p>Show answer key:
-        <select name="key" value="yes">
+        <select name="key" id="key" value="yes">
             <option value="yes">yes</option>
             <option value="no">no</option>
-        </select></p>
+        </select>
+    </p>
 
 
         <select name="questionType" id="questionType" >
@@ -93,9 +95,39 @@ $(document).ready(function(){
             This creaion and deletion done in questionTypes.js -->
         </div>
                 
-        <br> <br>
+        <br> 
+        <br>
         
-	        <input type="submit" value="Get Quiz">
+	   <input type="submit" value="Get Quiz">
+	   
+	   <button type="button" name="quizButton" id="quizButton">Get Quiz (test)</button>
+	   <script>
+    	   $('#quizButton').click(function()
+            {
+                $('#quizArea').empty();
+                //Fill with qeuestions
+                //I think code to do this is in quiz.js?
+            }
+	   </script>
+	   
+	   <div name="quizArea" id="quizArea">
+	   </div>
+	   
+	   
+	   
+	   <button type="button" name="URLButton" id="URLButton">Generate new URL (test)</button>
+        <script>
+            //Something like this?
+            $('#URLButton').click(function()
+            {
+                var url = "http://...";
+                url += $('#questions').val();
+                url += $('#key').val();
+                url += $('#questionType').val();
+                console.log(url);
+            });
+        </script>
+
 
     </form>
     </p>

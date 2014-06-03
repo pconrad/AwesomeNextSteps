@@ -82,7 +82,7 @@ function addOptionForParameters()
     {
         //Get the selected question, 
         //and take out any parameters
-        var selectedQuestion =$(this).val();
+        var selectedQuestion = $(this).val();
     	var params = questionTypes[selectedQuestion].parameters; 
     	
         //If there aren't any parameters, 
