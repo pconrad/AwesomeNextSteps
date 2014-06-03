@@ -93,22 +93,18 @@ function buildQuiz() {
 
 
     //Regex - URL parsing... 
-    //Should do something kind of like this, but with a json stringified object 
-    //that is inside the URL
-    /*
+    //This looks for something of the form "....Parameter"
+    //and takes its value, giving it to the quiz descriptor
+    //This only works for one parameter, but we are going to 
+    //refactor this whole file anyway, so I am leaving it for now
+    //It wont have any effect on questions with no parameters
+    
     var parameterRegex = /&([^=&#]*)(Parameter)(\=)([^=&#]*)&*/g;
     var match, params = {};
-
     while (match = parameterRegex.exec(url.data.attr.query)) 
     {
         params[match[1]] = match[4];
     }
- 
-    console.log(params);
-    */
-
-
-
 
     var title = "";
     try {
