@@ -80,8 +80,6 @@ $(document).ready(function(){
             <option value="no">no</option>
         </select>
     </p>
-
-
         <select name="questionType" id="questionType" >
 	        <option selected disabled>Question Type</option>
 	            <!-- all other options populated using a call to 
@@ -91,8 +89,8 @@ $(document).ready(function(){
         
         <div name="parametersDiv" id="parametersDiv">
             <!-- This empty div is filled with html elements that 
-            correspond the th parameters for a given question.  
-            This creaion and deletion done in questionTypes.js -->
+            correspond to the parameters for a given question.  
+            This creation and deletion is done in questionTypes.js -->
         </div>
                 
         <br> 
@@ -100,38 +98,11 @@ $(document).ready(function(){
         
 	   <input type="submit" value="Get Quiz">
 	   
-	   <button type="button" name="quizButton" id="quizButton">Get Quiz (test)</button>
-	   <script>
-    	   $('#quizButton').click(function()
-            {
-                $('#quizArea').empty();
-                //Fill with qeuestions
-                //I think code to do this is in quiz.js?
-            }
-	   </script>
-	   
 	   <div name="quizArea" id="quizArea">
 	   </div>
-	   
-	   
-	   
-	   <button type="button" name="URLButton" id="URLButton">Generate new URL (test)</button>
-        <script>
-            //Something like this?
-            $('#URLButton').click(function()
-            {
-                var url = "http://...";
-                url += $('#questions').val();
-                url += $('#key').val();
-                url += $('#questionType').val();
-                console.log(url);
-            });
-        </script>
-
 
     </form>
     </p>
-
 
 </body>
 
