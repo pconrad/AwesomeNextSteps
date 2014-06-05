@@ -3,67 +3,19 @@
 //Tried to make this easy to read...
 var questionTypes = 
 {
-    "changeOfBase":          
-    {                          
-        "f": changeOfBaseQuestion,       
-        title: "Change of Base"
+    "changeOfBase":          {"f": changeOfBaseQuestion, title: "Change of Base"},
+    "orderOfOperations":     {"f": orderOfOperationsQuestion, title: "Order of Operations"},
+    
+    "operandsAndOperators":  {"f":operandsAndOperatorsQuestion, title: "Operands and Operators", 
+    parameters: {"difficulty": {type: "select", values: ["easy", "medium", "hard"]}}
     },
     
-    "orderOfOperations":     
-    {
-        "f": orderOfOperationsQuestion,  
-        title: "Order of Operations"
-    },
-    
-    "operandsAndOperators":  
-    {
-        "f":operandsAndOperatorsQuestion,
-        title: "Operands and Operators", 
-        parameters: 
-        {
-            "difficulty": 
-            {
-                type: "select",
-                values: ["easy", "medium", "hard"]
-            }
-        }
-    },
-    
-    "pythonProgramOutput":   
-    {
-        "f":pythonProgramOutputQuestion, 
-        title: "Python Program Output"
-    },
-    
-    "pythonStringSlice":     
-    {
-        "f":pythonStringSliceQuestion,   
-        title: "Python String Slice"
-    },
-    
-    "symbolicLogic":         
-    {
-        "f":symbolicLogicQuestion,       
-        title: "Symbolic Logic"   
-    },
-    
-    "CvariableType":         
-    {
-        "f":CvariableTypeQuestion,       
-        title: "C Variable Type"  
-    },
-    
-    "cStrings":              
-    {
-        "f":cStringsQuestion,            
-        title: "C Strings"     
-    },
-    
-    "pyStrings":             
-    {
-        "f":pyStringsQuestion,           
-        title: "Python Strings"   
-    }
+    "pythonProgramOutput":   {"f":pythonProgramOutputQuestion, title: "Python Program Output"},
+    "pythonStringSlice":     {"f":pythonStringSliceQuestion, title: "Python String Slice"},
+    "symbolicLogic":         {"f":symbolicLogicQuestion, title: "Symbolic Logic"},
+    "CvariableType":         {"f":CvariableTypeQuestion, title: "C Variable Type"},
+    "cStrings":              {"f":cStringsQuestion, title: "C Strings"},
+    "pyStrings":             {"f":pyStringsQuestion, title: "Python Strings"}
 };//End of questionTypes def
 
 
