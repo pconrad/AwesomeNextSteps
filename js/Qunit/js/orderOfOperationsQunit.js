@@ -121,53 +121,6 @@ function orderOfOperationsQuestion(randomStream, params) {
                         {value: this.distract1, flag: false},
                         {value: this.distract2, flag: false},
                         {value: this.distract3, flag: false} ];   
-
-    randomStream.shuffle(this.answerChoices);
-
-    //Find the correct answer
-    this.correctIndex = 0;
-    for(var i=0; i<this.answerChoices.length; i++)
-    {
-        if(this.answerChoices[i].flag == true)
-            this.correctIndex = i;           
-    }
-    
-    this.formatQuestion = function(format) {
-      switch (format) {
-         case "HTML": return this.formatQuestionHTML();
-      }  
-      return "unknown format"; // TODO: consider exception
-    };
-    
-    this.formatQuestionHTML = function () {
-
-	    //Generate the question text
-        if(this.difficulty == "easy" || this.difficulty == "medium") {//two operations
-          var questionText = "<p>What is " + this.a + this.op1 + this.b + this.op2 + this.c + "?";
-        }
-        else if(this.difficulty == "hard") {//three operations
-          var questionText = "<p>What is " + this.a + this.op1 + this.b + this.op2 + this.c + this.op3 + this.d + "?";
-        }
-	    //Add the answer options
-        questionText += "<p><strong>a) </strong>" 
-            + this.answerChoices[0].value + "<br><strong>b) </strong>" 
-            + this.answerChoices[1].value + "<br><strong>c) </strong>" 
-            + this.answerChoices[2].value + "<br><strong>d) </strong>" 
-             + this.answerChoices[3].value + "</p>";
-
-	    return questionText;
-    };
-
-    this.formatAnswer = function(format) {
-      switch (format) {
-         case "HTML": return this.formatAnswerHTML();
-      }  
-      return "unknown format"; // TODO: consider exception
-    };
-    
-    this.formatAnswerHTML = function () {
-        var text = String.fromCharCode(this.correctIndex + 97); //0 = 'a', 1 = 'b', 2 = 'c', etc...
-        return text;
-    };
+    return this.answerChoices;
 
 };
