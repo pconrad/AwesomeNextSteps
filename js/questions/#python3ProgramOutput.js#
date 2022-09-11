@@ -183,7 +183,7 @@ function randomPrintFunc(randomStream, argument, num)
    var ret = randomIntStatement(randomStream, variable);
    func.value = ret.value
    func.def = "def " + id + "(" + variable.text + "):\n"
-                 + "\tprint " + ret.text + "\n\n";
+                 + "\tprint(" + ret.text + ")\n\n";
    func.text = id + "(" + argument.text + ")";
    return func;
 }
@@ -196,8 +196,28 @@ function getRandomVariable (randomStream)
   return variable;
 }
 
+function repeatString(string, iterations) {
+    retVal = ""
+    for (var i=0; i<iterations; i++) {
+	retVal += string;
+    }
+    return retVal
+}
+
+function restartString(format, numEquals) {
+
+    return idlePrompt(format) + 
+	repeatString("=",numEquals) + 
+	" RESTART " + 
+	repeatString("=",numEquals)
+}
+
+function idlePrompt(format) {
+    return ("&gt;&gt;&gt;&nbsp;")
+}
+
 //function PythonProgramGenerator2FuncAndPrint(randomStream)
-function pythonProgramOutputA(randomStream)
+function python3ProgramOutputA(randomStream)
 {
 	//var programString = '';
         var variable = {};
@@ -207,7 +227,7 @@ function pythonProgramOutputA(randomStream)
 	var randomFunc2 = randomReturnFunc(randomStream,randomFunc1,1);
 	
 	this.programString = randomFunc1.def + randomFunc2.def +
-	  "print " + randomFunc2.text + "";
+	  "print(" + randomFunc2.text + ")";
 
   this.correctAnswer = randomFunc2.value
 
@@ -220,7 +240,7 @@ function pythonProgramOutputA(randomStream)
 	flag: false} ]
 
       this.correctIndex = 0;
-    this.answerChoices = this.answerChoices.map(function(arg) { return {"value": ">>> ================================ RESTART ================================<br>"+arg.value + "<br>>>>", "flag": arg.flag }; });
+    this.answerChoices = this.answerChoices.map(function(arg) { return {"value": restartString("HTML",5) + "<br />" +arg.value + "<br>" + idlePrompt("HTML"), "flag": arg.flag }; });
     randomStream.shuffle(this.answerChoices);
 
     for(var i=0; i<this.answerChoices.length; i++)
@@ -265,7 +285,7 @@ function pythonProgramOutputA(randomStream)
    
 };
 
-function pythonProgramOutputB(randomStream)
+function python3ProgramOutputB(randomStream)
 {
 	//var programString = '';
         var variable1 = {};
@@ -292,7 +312,7 @@ function pythonProgramOutputB(randomStream)
   flag: false} ]
 
       this.correctIndex = 0;
-    this.answerChoices = this.answerChoices.map(function(arg) { return {"value": ">>> ================================ RESTART ================================<br>"+arg.value + "<br>>>>", "flag": arg.flag }; });
+    this.answerChoices = this.answerChoices.map(function(arg) { return {"value": restartString("HTML",5) + "<br />" + +arg.value + "<br>" + idlePrompt("HTML"), "flag": arg.flag }; });
 
 
     randomStream.shuffle(this.answerChoices);
@@ -339,7 +359,7 @@ function pythonProgramOutputB(randomStream)
    
 };
 
-function pythonProgramOutputC(randomStream)
+function python3ProgramOutputC(randomStream)
 {
   //var programString = '';
         var variable1 = {};
@@ -358,7 +378,7 @@ function pythonProgramOutputC(randomStream)
   
 
   this.programString = randomFunc1.def + "\n"+ randomFunc2.def +
-     variable.text + " = " + randomFunc1.text + "\n"+ "print " + randomFunc2.text + "\n";
+     variable.text + " = " + randomFunc1.text + "\n"+ "print(" + randomFunc2.text + ")\n";
 
   this.correctAnswer = 
 		randomFunc2.value.toString();
@@ -372,7 +392,7 @@ function pythonProgramOutputC(randomStream)
   flag: false} ]
 
       this.correctIndex = 0;
-    this.answerChoices = this.answerChoices.map(function(arg) { return {"value": ">>> ================================ RESTART ================================<br>"+arg.value + "<br>>>>", "flag": arg.flag }; });
+    this.answerChoices = this.answerChoices.map(function(arg) { return {"value": restartString("HTML",5) + "<br>" + arg.value + "<br>" + idlePrompt("HTML"), "flag": arg.flag }; });
 
     randomStream.shuffle(this.answerChoices);
 
@@ -419,15 +439,15 @@ function pythonProgramOutputC(randomStream)
 };
 
 
-function pythonProgramOutputQuestion(randomStream)
+function python3ProgramOutputQuestion(randomStream)
 {
   switch(randomStream.nextIntRange(3))
   {
     case 0:
-      return new pythonProgramOutputA(randomStream)
+      return new python3ProgramOutputA(randomStream)
     case 1:
-      return new pythonProgramOutputB(randomStream)
+      return new python3ProgramOutputB(randomStream)
     case 2:
-      return new pythonProgramOutputC(randomStream)
+      return new python3ProgramOutputC(randomStream)
   }
 }

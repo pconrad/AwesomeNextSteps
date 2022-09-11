@@ -1,15 +1,14 @@
 // NEW-QUESTION-TYPE: add to questionFunctions dictionary below
+// TODO: Refactor so that the stuff below is part of questionTypes.js and 
+//   this goes away
 
-var questionTypes = {
-"changeOfBase":          {"f": changeOfBaseQuestion,       title: "Change of Base"},
-"orderOfOperations":     {"f": orderOfOperationsQuestion,  title: "Order of Operations"},
+var questionParams = {
+"changeOfBase":          {},
+"orderOfOperations":     {},
 
 "operandsAndOperators":  {"f":operandsAndOperatorsQuestion,
 						title: "Operands and Operators", 
 				   parameters: {"difficulty": ["easy", "medium", "hard"]}
-
-//				   parameters: {"difficulty": { type: "dropDown", values: ["easy", "medium", "hard"]}}
-
 				   		},
 
 "pythonProgramOutput":   {"f":pythonProgramOutputQuestion, title: "Python Program Output"},

@@ -21,15 +21,29 @@
     <script src="../js/questions/symbolicLogic.js"></script>
     <script src="../js/questions/CvariableType.js"></script>
     <script src="../js/questions/strings.js"></script>
-    <script src="../js/questionTypes.js"></script>    
+    <script src="../js/questionTypes.js"></script>
     <script src="../purl/purl.js"></script>
     <script src="../js/parser.js"></script>
     <script src="../js/quiz.js"></script>
     <script>
 
 $(document).ready(function(){
-   buildQuizFromJSON();
+    submitHandler = function() {
+
+    // Get rid of all child elements of #stuffGoesHere
+
+    $("#stuffGoesHere").empty();
+
+    var pElement=$("<p></p>").text("submitHandler says: foo=" + $("#foo").val() + " bar=" + $("#bar").val() );
+
+    $("#stuffGoesHere").append(pElement);
+
+
+   }
 });
+
+ 
+
 
    </script>
 </head>
@@ -37,14 +51,19 @@ $(document).ready(function(){
 <body>
 
     <header> 
-        <h1 id="quizname"></h1>
-        <p id="linkBack"></p>
+      <h1>This is a test</h1>
     </header>
 
-    <div id="seed"></div>
-    <div id="questions"></div>
-    <div id="key"></div>
-    <div id="json"></div>
+    <form action="" method="GET" onsubmit="submitHandler(); return false;">
+      <input type="text" name="foo" id="foo"></input>
+      <input type="text" name="bar" id="bar"></input>
+
+      <input type="submit" value="Click me" />
+    </form>
+
+    <div id="stuffGoesHere">
+    </div>
+
     
 </body>
 
