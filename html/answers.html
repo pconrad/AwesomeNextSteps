@@ -24,10 +24,9 @@
 	<div id="answers"></div>
 
 	<script>
-		var answers = localStorage.getItem("answers");
-		var seed = localStorage.getItem("seed");
-		document.getElementById("head").innerHTML = "<h1> Answer Key for Quiz #" + seed + "</h1> <hr> <br>";	
-		document.getElementById("answers").innerHTML = answers;
+		var theQuiz = JSON.parse(localStorage.getItem("quiz"));
+		document.getElementById("head").innerHTML += "<h1> Answer Key for Quiz #" + theQuiz.seed + "</h1> <hr> <br>";	
+		document.getElementById("answers").innerHTML += theQuiz.answers;
 	</script>
 
     
